@@ -12,7 +12,7 @@
                     <h5 class="card-title">
                         <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
                     </h5>
-                    <p class="card-text">{{ Str::limit($post->description, 150) }}</p>
+                    <p class="card-text">{!! strip_tags($post->description , '<b><i><u><strong><em>' ) !!}</p>
                     <p><strong>Дата публикации:</strong> {{ $post->created_at->format('d-m-Y') }}</p>
                     <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-primary">Читать далее</a>
                 </div>

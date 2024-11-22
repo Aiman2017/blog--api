@@ -20,7 +20,14 @@
             </div>
 
             <div class="mb-3">
-                <label for="status" class="form-label">Статусы</label>
+                <label for="published_at" class="form-label">Дата и время</label>
+                <input type="datetime-local" class="form-control-sm border-0 rounded-3 shadow-sm" id="published_at" name="published_at">
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="status" class="form-label">Статус</label>
                 <input type="checkbox" id="status" name="status" value="1" checked>
             </div>
 

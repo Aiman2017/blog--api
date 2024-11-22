@@ -16,7 +16,7 @@
             <tbody>
             @forelse ($authors as $author)
                 <tr>
-                    <td>{{ $author->name }}</td>
+                    <td><a  href="{{route('blog.authors', $author->name)}}">{{ $author->name }}</a></td>
                     <td>{{ $author->email }}</td>
                 </tr>
             @empty

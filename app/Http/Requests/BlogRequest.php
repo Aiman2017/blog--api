@@ -21,10 +21,21 @@ class BlogRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'title' => 'required',
             'description' => 'required',
             'status' => 'boolean',
+            'published_at' => 'required',
         ];
+
+        if ($this->isMethod('put') || $this->isMethod('patch')) {
+            $rules['published_at'] = 'sometimes|date';
+            $rules['title'] = 'sometimes|string';
+            $rules['description'] = 'sometimes|string';
+            $rules['status'] = 'boolean';
+        }
+
+        return $rules;
     }
+
 }

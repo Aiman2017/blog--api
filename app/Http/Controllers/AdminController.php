@@ -17,10 +17,11 @@ class AdminController extends Controller
     public function index()
     {
         if (!Gate::allows('viewAny', Blog::class)) {
-            return redirect()->route('blog');
+            return redirect()->route('blog.index');
         }
         return view('blog.admin.index', [
-            'posts' => Blog::query()->with('user')->paginate(5),
+            'posts' => Blog::query()->with('user')
+                ->paginate(),
         ]);
     }
 
@@ -72,7 +73,7 @@ class AdminController extends Controller
         $post = Blog::query()->findOrFail($id);
 
         if (!Gate::allows('viewAny', Blog::class)) {
-            return redirect()->route('blog');
+            return redirect()->route('blog.index');
         }
         return view('blog.admin.edit', [
             'post' => $post,
@@ -122,7 +123,7 @@ class AdminController extends Controller
     {
         return view('blog.admin.my-post',
             [
-                'posts' => Blog::query()->where('user_id', '=', auth()->user()->id)->paginate(5),
+                'posts' => Blog::query()->where('user_id', '=', auth()->user()->id)->paginate(),
             ]);
     }
 
