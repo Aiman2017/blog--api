@@ -24,7 +24,7 @@ class AdminController extends Controller
      */
     public function index(): JsonResponse
     {
-        $blog = Blog::query()->latest()->get();
+        $blog = Blog::query()->latest()->paginate();
         return response()->json($blog);
     }
 
